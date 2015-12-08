@@ -1,0 +1,96 @@
+//Georgetown CCT
+//Expressive Computation Final#1 
+//Whitehouse and Fireworks Fourth of July. 
+//Sooyeon Hong
+
+PImage img;
+Firework[] fireworks = new Firework[7]; 
+
+void setup() {
+  size (580, 386);
+  colorMode(RGB, 255, 255, 255);
+  img=loadImage("32-white-house.jpg"); // whitehouse image getting from google image                                    
+  for (int i = 0; i < fireworks.length; i++) {
+    fireworks[i] = new Firework ();
+  }
+  strokeWeight (4);
+}
+
+void draw () {
+  image (img,0,0);
+  for (int i=0; i < fireworks.length; i++) {
+    fireworks[i].display();
+  }
+}
+
+class Dot {    //declaring particles (dots) of fireworks 
+  float red = random (40,255);
+  float green;
+  float blue = random (40,255);
+  
+  float R = random (10,100);
+  float theta = random (10,100);
+  float x;
+  float y;
+  
+  float appearingX = R * cos (theta);
+  float appearingY = R * sin (theta);
+  
+  float disappearingX = random (0.03, 0.09);
+  float disappearingY = random (0.03, 0.09);
+  
+  Dot (float tempGreen){ //green(yellow?) color is important for firework i guess...
+    x = 0;
+    y = 0;
+    green = tempGreen;
+  }
+  void update () {
+    x += (appearingX-X) * disappearingX;
+    y += (appearingY-Y) * disappearingY;
+  }
+  void display (float alpha) {
+    stroke (red, green, blue, alpha);
+    point (x, y);
+  }
+}
+
+class Firework {    //declaring firework expression...
+  int dotValue = (int)random (10, 100);
+  Dot [] dots = new Dot [dotValue];
+  
+  float x = random (width);
+  float y = random (0,120);
+  float green = random (255);
+  
+  float alpha = random (10,255);
+  float alpha_speed = random (3,8.8);
+  Firework () {
+    for (int i = 0; i < dots.length; i++) {
+      dots[i] = new Dot (green);
+      
+    }
+  }
+ void display () {
+   pushMatrix ();
+   translate (x, y);
+   for (int i = 0; i < dots.length; i++) {
+     dots[i].update();
+     dots[i].display (alpha);
+   }
+   alpha -= alpha_speed; 
+   
+   if (alpha < 0){
+     x = random (width);
+     y = 100;
+     green = random (255);
+     
+      for (int i = 0; i < dots.length; i ++) {
+        dots[i].x=0;
+        dots[i].y=0;
+      }
+      alpha = 255;
+   }
+   popMatrix();
+ }
+
+}
