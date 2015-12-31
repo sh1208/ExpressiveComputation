@@ -1,0 +1,100 @@
+//Georgetown CCT
+//Expressive Computation Final#3
+//rosaium still image - by drawing 9 differnet quads for each one rose
+//Sooyeon Hong
+
+
+PImage green;
+
+void setup() {
+size (800,800);
+green = loadImage("green.png"); //source from -https://www.google.co.kr/search?q=%EC%9E%A5%EB%AF%B8%EA%BD%83%EB%B0%B0%EA%B2%BD&rlz=1C1OPRB_enKR543KR568&espv=2&biw=759&bih=955&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjwxOvZioXKAhUFF6YKHSDJAsgQ_AUIBigB#tbm=isch&tbs=rimg%3ACeGHss70POxWIjjvUZgv1rxTQU4jQtQgtIlhli2x-0lCcm8An4YTgdmTuDGQk1TfsCN_1mtmq2XUmJAQa1SCqlmORWCoSCe9RmC_1WvFNBET6PnSqsj94YKhIJTiNC1CC0iWERku-G3twtTL4qEgmWLbH7SUJybxHakF4ncRfWASoSCQCfhhOB2ZO4ESjUlN53AX_1PKhIJMZCTVN-wI38ROrUToo1_1O_14qEgma2arZdSYkBBGM1izslQfMfCoSCRrVIKqWY5FYEVWRMQjBUNhD&q=%EA%B7%B8%EB%A6%B0%EB%B0%B0%EA%B2%BD&imgrc=McsJqj1hTvVK9M%3A
+}
+ 
+void draw() { 
+image (green,0,0);
+noStroke();
+
+//1st rose shape by drawing 9quads
+fill (255,204,204);
+quad(0,50,350,0,400,350,50,400); //1st quad
+fill(255,153,153);
+quad (6,100, 300,6,394,300,100,396); //2nd  
+fill(255,102,102);
+quad(22,150,250,22,379,250,158,380); //3rd
+fill(255,51,51);
+quad(47,197, 200,47,352,200,196,355); //4th
+fill(255,0,0);
+quad (84,236, 165,80, 313,160, 230,322); //5th
+fill(204,0,0);
+quad (126,261, 143,121, 272,137, 250,284); //6th
+fill(153,0,0);
+quad (170,272, 137,165,229,131, 259,240); //7th
+fill(102,0,0);
+quad (149,205,210,258, 249,200, 188,144); //8th
+fill(51,0,0);
+quad (168,175, 230,230, 174, 227, 224,176); //9th quad
+
+
+//2nd rose shape by drawing 9 quads
+fill(253,145,195); //1st
+quad(400,50,750,0,800,350,450,400);
+fill(233,104,164);//2nd
+quad (406,100, 700,6,794,300,500,396); 
+fill(210,77,139);//3rd
+quad(422,150,650,22,779,250,558,380);
+fill(192,61,122);//4th
+quad(447,197, 600,47,752,200,596,355);
+fill(166,39,98);//5th
+quad (484,236, 565,80, 713,160, 630,322);
+fill(149,27,84);//6th
+quad (526,261, 543,121, 672,137, 650,284);
+fill(139,14,72);//7th
+quad (570,272, 537,165,629,131, 659,240);
+fill(119,4,58);//8th
+quad (549,205,610,258, 649,200, 588,144);
+fill(82,3,40);//9th quad
+quad (568,175, 630,230, 574, 227, 624,176);
+
+
+//3rd rose shape by drawing 9 quads
+fill(252,208,164);
+quad(0,450,350,400,400,750,50,800); //1st quad
+fill(243,181,119);
+quad (6,500, 300,406,394,700,100,796); //2snd
+fill(230,161,92);
+quad(22,550,250,422,379,650,158,780); //3rd
+fill(222,144,67);
+quad(47,597, 200,447,352,600,196,755); //4th
+fill(203,116,28);
+quad (84,636, 165,480, 313,560, 230,722); //5th
+fill(186,104,21);
+quad (126,661, 143,521, 272,537, 250,684); //6th
+fill(174,93,13);
+quad (170,672, 137,565,229,531, 259,640); //7th
+fill(141,77,13);
+quad (149,605,210,658, 249,600, 188,544); //8th
+fill(111,57,2);
+quad (168,575, 230,630, 174, 627, 224,576); //9th quad
+
+
+//4th rose shape by drawing 9 quads
+fill (239,218,114);
+quad(400,450,750,400,800,750,450,800); //1st quad
+fill(222,201,97);
+quad (406,500, 700,406,794,700,500,796); //2nd
+fill(198,177,71);
+quad(422,550,650,422,779,650,558,780); //3rd
+fill(193,170,55);
+quad(447,597, 600,447,752,600,596,755); //4th
+fill(185,161,41);
+quad (484,636, 565,480, 713,560, 630,722); //5th
+fill(161,139,28);
+quad (526,661, 543,521, 672,537, 650,684); //6th
+fill(137,116,15);
+quad (570,672, 537,565,629,531, 659,640); //7th
+fill(128,110,17);
+quad (549,605,610,658, 649,600, 588,544); //8th
+fill(102,86,5);
+quad (568,575, 630,630, 574, 627, 624,576); //9th quad
+}
