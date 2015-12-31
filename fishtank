@@ -1,0 +1,103 @@
+//Georgetown CCT
+//Expressive Computation Final#2
+//Fishtank animation - making bubbles and fish, loading image as background
+//Sooyeon Hong
+
+// background
+PImage underthesea;
+
+// fish varialbes
+int fishNumber = 15; // number of fish
+float [] fishX; //each fish's X-coordinate 
+float [] fishY; //each fish's Y-coordinate
+float [] fishSpeed; // each fish's moving speed value
+
+// bubble variables
+int bubbleNumber= 30; // number of bubbles
+int bubblei=0; //bubble array in the WHILE loop
+float [] bubbleX; // each bubble's X-coordinate
+float [] bubbleY; // each bubble's Y-coordinate
+float [] bubbleSpeed; // bubbles' moving speed value
+float [] bubbleR; // bubbles' radius
+
+
+void setup () {
+  size (800,600);
+  underthesea = loadImage ("underthesea2.png");//background
+  
+  //#1. fish arrays preparation
+  fishX = new float [fishNumber];
+  fishY = new float [fishNumber];
+  fishSpeed = new float [fishNumber];
+  
+  //bubble arrays preparation
+  bubbleX = new float [bubbleNumber];
+  bubbleY = new float [bubbleNumber];
+  bubbleSpeed = new float [bubbleNumber];
+  bubbleR = new float [bubbleNumber];
+  
+  //#2. loop function - fish
+  for (int i=0; i<fishNumber; i++) {
+  fishX[i]=random(width);
+  fishY[i]=random(height);
+  fishSpeed[i] = random (1,7);
+  // loop function - bubble
+  while (bubblei<bubbleNumber) {
+  bubbleX[bubblei] = random(width);
+  bubbleY[bubblei] = random(height);
+  bubbleSpeed[bubblei] = random(1,2);
+  bubbleR[bubblei] = random (7, 30);
+  bubblei=bubblei+1;
+  }
+ }
+}
+
+void draw () {
+  image (underthesea,0,0); // background image
+  drawFish();
+  drawBubble();
+ }
+ 
+// fish drawing begin 
+void drawFish(){   
+  for (int i=0; i<fishNumber; i++) {
+  //making fish moves to the right
+  fishX[i]+= fishSpeed[i]; 
+    if (fishX[i] > width) {
+  //fish touch edge of the screen? reset
+  fishX[i] = random(width);
+  fishY[i] = random(height);
+  fishSpeed[i] = random(1,7);
+  }
+  
+  //drawing fish shape!
+  noStroke();
+  fill (235,160,30); // orange fish body
+  ellipse(fishX[i]+40, fishY[i]+40, 65,30); // oval fish body
+  triangle(fishX[i], fishY[i]+25, fishX[i]+20, fishY[i]+40, fishX[i], fishY[i]+55); // fish tail
+  quad(fishX[i]+24,fishY[i]+20, fishX[i]+45,fishY[i]+18, fishX[i]+53,fishY[i]+40,fishX[i]+32,fishY[i]+40); //fish fin
+  //draw fish eye 
+  fill (128,128,128); 
+  ellipse(fishX[i]+55, fishY[i]+40, 10,10); 
+  }
+}
+
+
+// bubble drawing begin
+void drawBubble() {
+  for (int i=0; i<bubbleNumber; i=i+1) { 
+   //bubble rise up
+   bubbleY[i] = bubbleY[i] - bubbleSpeed[i]; 
+  if (bubbleY[i]+bubbleR[i]<0) {
+  //bubbles touch top? reset (let them continuiously rise)
+  bubbleX[i] = random (width);
+  bubbleY[i] = random (height);
+  bubbleSpeed[i] = random(1,2);
+  bubbleR[i] = random (7,35);
+  }        
+  //drawing bubbles!
+  noStroke();
+  fill (143,221,234);
+  ellipse(bubbleX[i], bubbleY[i], bubbleR[i], bubbleR[i]); 
+  }
+}
